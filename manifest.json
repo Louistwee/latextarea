@@ -1,0 +1,31 @@
+{
+	"manifest_version": 2,
+	"name": "Latextarea",
+	"description": "Write Latex in a textarea",
+	"version": "1.0",
+	"permissions": [
+		"tabs",
+		"<all_urls>"
+	],
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": true
+	},
+	"browser_action": {
+		"default_popup": "library.html"
+	},
+	"content_scripts": [{
+		"matches": ["<all_urls>"],
+		"match_about_blank": true,
+		"all_frames": true,
+		"js": ["jquery.js","mathquill.js"],
+		"css":["style.css","mathquill.css"],
+		"run_at": "document_start"
+   },
+   {
+		"matches": ["<all_urls>"],
+		"match_about_blank": true,
+		"all_frames": true,
+		"js": ["content.js"]
+   }]
+}
